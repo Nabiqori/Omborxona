@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Omborxona | Mahsulot O'chirish</title>
+    <title>Omborxona | Sotuv O'chirish</title>
     <style>
         body {
             background-color: #f2f2f2;
@@ -19,9 +19,9 @@
             box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
             padding: 20px;
             text-align: center;
-            max-width: 400px;
+            width: 400px;
         }
-        h2 {
+        h1 {
             color: #4CAF50;
         }
         p {
@@ -41,23 +41,23 @@
         button:hover {
             background-color: #3e8e41;
         }
-        .btn-cancel {
+        .cancel-btn {
             background-color: #f44336;
         }
-        .btn-cancel:hover {
+        .cancel-btn:hover {
             background-color: #d32f2f;
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <h2>Mahsulotni O'chirish</h2>
-        <p>{{ mahsulot.nom }} ma'lumotini o'chirishni tasdiqlang:</p>
-        <a href="/mahsulot/{{ mahsulot.id }}/o'chirish/">
+        <h1>Sotuvni O'chirish</h1>
+        <p>{{ sotuv.mijoz.ism }} ma'lumotini o'chirishni tasdiqlaysizmi?</p>
+        <a href="/sotuv/{{ sotuv.id }}/ochirish/">
             <button>Tasdiqlash</button>
         </a>
-        <a href="/mahsulotlar/">
-            <button class="btn-cancel">Bekor qilish</button>
+        <a href="/sotuv/">
+            <button class="cancel-btn">Bekor Qilish</button>
         </a>
     </div>
 </body>
