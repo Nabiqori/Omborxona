@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% block mahsulot_active %} active {% endblock %}
 {% block section %}
 Mahsulotlar
 {% endblock %}
@@ -34,7 +35,7 @@ Mahsulotlar
                             <td>{% if mahsulot.narx2 %} {{ mahsulot.narx2 }} so'm {% else %} - {% endif %}</td>
                             <td>{{ mahsulot.miqdor }} {{ mahsulot.olchov }}</td>
                             <td><a href="/{{mahsulot.id}}/tahrirlash/"><button type="submit" class="btn btn-warning" data-toggle="modal">Tahrirlash</button></a>
-                            <a href="/{{mahsulot.id}}/ochirish/tasdiqlash"><button type="submit" class="btn btn-danger" data-toggle="modal">Ochirish</button></a></td>
+                            <a href="/mahsulot/{{mahsulot.id}}/ochirish/tasdiqlash"><button type="submit" class="btn btn-danger" data-toggle="modal">Ochirish</button></a></td>
                         </tr>
                     {% endfor %}
                     </tbody>

@@ -1,5 +1,5 @@
 from django.db.models.fields import return_None
-\
+
 
 from django.shortcuts import render, redirect, get_object_or_404
 from django.views import View
@@ -28,7 +28,24 @@ class Mahsulotlar(View):
             bolim = Bolim.objects.first()
         )
         return redirect('mahsulotlar')
-def Tahrirlash(request, pk):
+class Mijozlar(View):
+    def get(self,request):
+        mijozlar = Mijoz.objects.all()
+        context={
+            "mijozlar":mijozlar,
+        }
+        return render(request, "mijozlar.html", context)
+    def post(self, request):
+        Mijoz.objects.create(
+            ism = request.POST.get('ism'),
+            dokon = request.POST.get('dokon'),
+            manzil = request.POST.get('manzil'),
+            tel =request.POST.get('tel'),
+            qarz =0 if request.POST.get('qarz')=='' else request.POST.get('qarz'),
+            bolim = Bolim.objects.first()
+        )
+        return redirect('mijozlar')
+def TahrirlashMahsulot(request, pk):
     product=get_object_or_404(Mahsulot, pk=pk)
     if request.method == "POST":
 
@@ -45,6 +62,22 @@ def Tahrirlash(request, pk):
         }
 
     return render(request, 'mahsulot-tahrirlash.html', context)
+def TahrirlashMijoz(request, pk):
+    client=Mijoz.objects.get(pk=pk)
+    if request.method == "POST":
+            Mijoz.objects.filter(pk=pk).update(
+                ism = request.POST.get('ism'),
+                dokon = request.POST.get('dokon'),
+                manzil = request.POST.get('manzil'),
+                tel = request.POST.get('tel'),
+                qarz=0 if request.POST.get('qarz') == '' else request.POST.get('qarz'),
+            )
+            return redirect("mijozlar")
+    context={
+            "client":client,
+        }
+
+    return render(request, 'mijoz-tahrirlash.html', context)
 def logout(request):
     return redirect("mahsulotlar")
 def Mahsulot_ochirish_tasdiqlash(request, pk):
@@ -57,3 +90,13 @@ def Mahsulot_ochirish(request, pk):
     mahsulot = get_object_or_404(Mahsulot, id=pk)
     mahsulot.delete()
     return redirect('mahsulotlar')
+def Mijoz_ochirish_tasdiqlash(request, pk):
+    mijoz=get_object_or_404(Mijoz, pk=pk)
+    context={
+        "mijoz":mijoz,
+    }
+    return render(request, "mijoz_delete_confirm.html", context)
+def Mijoz_ochirish(request, pk):
+    mijoz = get_object_or_404(Mijoz, pk=pk)
+    mijoz.delete()
+    return redirect('mijozlar')

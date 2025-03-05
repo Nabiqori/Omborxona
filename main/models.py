@@ -25,7 +25,7 @@ class Mijoz(models.Model):
     dokon = models.CharField(max_length=200)
     manzil = models.CharField(max_length=200)
     qarz = models.FloatField()
-    tel = models.CharField(max_length=10)
+    tel = models.CharField(max_length=20)
     bolim = models.ForeignKey(Bolim, on_delete=models.SET_NULL, null=True)
 
     def __str__(self):

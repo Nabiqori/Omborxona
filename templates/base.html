@@ -78,19 +78,19 @@
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
           <li class="nav-header">Menu</li>
           <li class="nav-item">
-            <a href="stats" class="nav-link">
+            <a href="/sotuv/" class="nav-link {% block sotuv_active %}{% endblock %}">
               <i class="nav-icon far fa-circle text-warning"></i>
               <p>Sotuvlar</p>
             </a>
           </li>
           <li class="nav-item">
-            <a href="/clients/" class="nav-link">
+            <a href="/mijozlar/" class="nav-link {% block mijoz_active %}{% endblock %}">
               <i class="nav-icon far fa-circle text-danger"></i>
               <p class="text">Mijozlar</p>
             </a>
           </li>
           <li class="nav-item">
-            <a href="goods" class="nav-link active">
+            <a href="/mahsulotlar/" class="nav-link {% block mahsulot_active %}{% endblock %}">
               <i class="nav-icon far fa-circle text-info"></i>
               <p>Mahsulotlar</p>
             </a>
