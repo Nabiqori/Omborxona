@@ -43,8 +43,6 @@
                     </div><!-- /.col -->
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
-                            <li class="breadcrumb-item"><a href="#">Home</a></li>
-                            <li class="breadcrumb-item active">Clients</li>
                             <li class="breadcrumb-item"><a href="/logout/">Logout</a></li>
                         </ol>
                     </div><!-- /.col -->
@@ -72,14 +70,6 @@
                 <option value="{{ sotuv.mijoz.id }}" selected>{{ sotuv.mijoz.ism }}</option>
                 {% for mijoz in mijozlar %}
                 <option value="{{ mijoz.id }}">{{ mijoz.ism }}</option>
-                {% endfor %}
-            </select>
-            <br>
-            <label>Bolim:</label>
-            <select name="bolim_id">
-                <option value="{{ sotuv.bolim.id }}" selected>{{ sotuv.bolim.nom }}</option>
-                {% for bolim in bolimlar %}
-                <option value="{{ bolim.id }}">{{ bolim.nom }}</option>
                 {% endfor %}
             </select>
 
