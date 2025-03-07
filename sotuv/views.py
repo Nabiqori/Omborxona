@@ -22,8 +22,8 @@ class Sotuvlar(View):
         if request.user.is_authenticated:
             qarz = None if request.POST.get('qarz') == "" else float(request.POST.get('qarz'))
             mijoz = Mijoz.objects.get(id=request.POST.get('mijoz_id'))
-            jami_summa = float(request.POST.get('jami_summa'))
-            tolandi = float(request.POST.get('tolandi'))
+            jami_summa = (request.POST.get('jami_summa'))
+            tolandi = (request.POST.get('tolandi'))
 
             mahsulot = Mahsulot.objects.get(id=request.POST.get('mahsulot_id'))
             miqdor = float(request.POST.get('miqdor'))
@@ -36,12 +36,13 @@ class Sotuvlar(View):
                 tolandi=miqdor*mahsulot.narx1
             elif request.POST.get('jami_summa')=='':
                 jami_summa=miqdor*mahsulot.narx1
+                tolandi=jami_summa
                 qarz=0
             elif request.POST.get('tolandi')=='':
                 jami_summa=miqdor*mahsulot.narx1
-                qarz=jami_summa-tolandi
+                qarz=jami_summa-float(tolandi)
             elif qarz==None:
-                qarz=jami_summa-tolandi
+                qarz=float(jami_summa)-float(tolandi)
             Sotuv.objects.create(
                 mahsulot=mahsulot,
                 mijoz=mijoz,
